@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/hexo-head%E9%85%8D%E7%BD%AEblog.jpg">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-19T12:46:41.920Z">
+<meta property="article:modified_time" content="2024-01-19T12:59:59.609Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="blog">
 <meta property="article:tag" content="网页">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          754 字
+          1k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          7 分钟
+          9 分钟
         
       </span>
     
@@ -366,6 +366,31 @@
 <div class="note note-warning">
             <p><span class="label label-warning"><strong>WARNING</strong></span></p><p>layout: about 必须存在，并且不能修改成其他值，否则不会显示头像等样式。</p>
           </div>
+
+<h3 id="3-4更新主题"><a href="#3-4更新主题" class="headerlink" title="3.4更新主题"></a>3.4更新主题</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><div class="note note-info">
+            <p>适用于npm安装的用户</p>
+          </div>
+<p>在博客目录下执行命令：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">npm <span class="hljs-keyword">update</span> <span class="hljs-comment">--save hexo-theme-fluid</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><div class="note note-info">
+            <p>适用于通过 Release 压缩包安装主题，且没有自行修改任何代码的情况。</p>
+          </div>
+
+<ol>
+<li>先将原文件夹重命名为别的名称，例如 fluid-bkp，用于升级失败进行回退；</li>
+<li>按照安装步骤，重新下载 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/releases">release</a>并解压重命名为 <code>fluid</code>；</li>
+<li>如果某些配置发生了变化（改名或弃用），release 的说明里会特别提示，同步修改原配置文件即可.</li>
+</ol>
+<h4 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h4><div class="note note-info">
+            <p>适用于自定义了一些代码，或想体验其他分支的情况，以 dev 分支为例。</p>
+          </div>
+
+<ol>
+<li>确定自己的 fluid 目录已经开启 git，并且所有改动都已 commit；</li>
+<li>把 fluid 仓库的 develop 分支拉取到自己当前的分支上（也可新建一个分支再拉取）：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git pull https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/fluid-dev/</span>hexo-theme-fluid.git develop<br></code></pre></td></tr></table></figure></li>
+<li>解决代码冲突，保留自己修改的部分（如何解决冲突可自行搜索）。</li>
+</ol>
 
                 
               </div>
@@ -759,6 +784,8 @@
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxuehua.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="/js/codeBlockFunction.js"></script>
+<script src="/js/codeBLang.js"></script>
 
 
 
