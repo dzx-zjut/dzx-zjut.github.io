@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Cmake的安装与Cmake命令的基本介绍">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/title.png">
+<meta property="og:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%B8%80%EF%BC%89/title.png">
 <meta property="article:published_time" content="2024-01-20T09:29:19.000Z">
-<meta property="article:modified_time" content="2024-01-20T10:23:16.870Z">
+<meta property="article:modified_time" content="2024-01-20T12:24:50.173Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Cmake">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/title.png">
+<meta name="twitter:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%B8%80%EF%BC%89/title.png">
   
   
   
@@ -228,7 +228,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/title.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%B8%80%EF%BC%89/title.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -313,10 +313,11 @@
                 <h1 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h1><p>C&#x2F;C++的编译过程中，通过命令处理多个文件的编译是及其复杂。如下所示：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs powershell">├─.idea<br>├─cmake<span class="hljs-literal">-build-debug</span><br>│  ├─.cmake<br>│  │  └─api<br>│  │      └─v1<br>│  │          ├─query<br>│  │          └─reply<br>│  ├─archive<br>│  ├─CMakeFiles<br>│  │  ├─<span class="hljs-number">3.27</span>.<span class="hljs-number">8</span><br>│  │  │  ├─CompilerIdC<br>│  │  │  │  └─tmp<br>│  │  │  └─CompilerIdCXX<br>│  │  │      └─tmp<br>│  │  ├─demo.dir<br>│  │  │  └─src<br>│  │  └─pkgRedirects<br>│  └─Testing<br>│      └─Temporary<br>├─include<br>└─src<br></code></pre></td></tr></table></figure>
 
-<p>在这个文件夹中有很多文件需要编译，如果使用命令就进行编译，那么就需要输入很多命令，这样就会很麻烦。所以就需要一个工具来进行管理，这个工具就是<strong>cmake</strong>。</p>
+<p>在这个文件夹中有很多文件需要编译，如果使用命令就进行编译，那么就需要输入很多命令，这样就会很麻烦。所以就需要一个工具来进行管理，这个工具就是<br><strong>cmake</strong>。</p>
 <h3 id="1-1-Cmake的安装"><a href="#1-1-Cmake的安装" class="headerlink" title="1.1 Cmake的安装"></a>1.1 Cmake的安装</h3><p>在<a target="_blank" rel="noopener" href="https://cmake.org/download/">cmake官网</a>下载对应的安装包，然后进行安装即可。</p>
 <p>可通过</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">cmake <span class="hljs-literal">--version</span><br></code></pre></td></tr></table></figure>
+
 <p>检测<strong>cmake</strong>是否安装成功。</p>
 <h3 id="2-1使用cmake编译c-文件"><a href="#2-1使用cmake编译c-文件" class="headerlink" title="2.1使用cmake编译c++文件"></a>2.1使用cmake编译c++文件</h3><p>在这个文件夹中，我们首先创建一个<strong>CMakeLists.txt</strong>文件，这个文件就是<strong>cmake</strong>的配置文件，利用这个文件我们就可以进行多文件的管理.</p>
 <p>比如在上面这个文件夹中，我们创建一个<strong>CMakeLists.txt</strong>文件，内容如下：</p>
@@ -327,6 +328,7 @@
 
 <p>然后文件夹中就会出现build文件夹，里面就有<strong>makefile</strong>文件。之后在powershell中输入</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">cmake <span class="hljs-literal">--build</span> .<br></code></pre></td></tr></table></figure>
+
 <p>在build文件夹中就会出现可执行文件。</p>
 <h3 id="2-2cmake-命令"><a href="#2-2cmake-命令" class="headerlink" title="2.2cmake 命令"></a>2.2cmake 命令</h3><p>在上面的例子中，我们使用了<strong>cmake</strong>的一些命令，下面就对这些命令进行介绍。</p>
 <h4 id="cmake-minimum-required"><a href="#cmake-minimum-required" class="headerlink" title="cmake_minimum_required"></a>cmake_minimum_required</h4><p><code>cmake_minimum_required(VERSION 3.27)</code>是设置<strong>cmake</strong>的最低版本。</p>
@@ -335,14 +337,14 @@
           </div>
 
 <h4 id="project（）"><a href="#project（）" class="headerlink" title="project（）"></a>project（）</h4><p><code>project(demo)</code>是设置项目名称。一般来说，这个名称和文件夹的名称是一样的。</p>
-<h4 id="set（）"><a href="#set（）" class="headerlink" title="set（）"></a>set（）</h4><p><code>set(&lt;variable&gt; &lt;value&gt; [CACHE &lt;type&gt; &lt;docstring&gt; [FORCE]])</code>这个命令相当于一个变量的定义，其中<code>&lt;variable&gt;</code>是变量的名称，<code>&lt;value&gt;</code>是变量的值，<code>[CACHE &lt;type&gt; &lt;docstring&gt; [FORCE]]</code>是可选的，其中<code>CACHE</code>是缓存，<code>&lt;type&gt;</code>是类型，<code>&lt;docstring&gt;</code>是文档字符串，<code>[FORCE]</code>是强制。</p>
+<h4 id="set（）"><a href="#set（）" class="headerlink" title="set（）"></a>set（）</h4><p><code>set(&lt;variable&gt; &lt;value&gt; [CACHE &lt;type&gt; &lt;docstring&gt; [FORCE]])</code>这个命令相当于一个变量的定义，其中<code>&lt;variable&gt;</code><br>是变量的名称，<code>&lt;value&gt;</code>是变量的值，<code>[CACHE &lt;type&gt; &lt;docstring&gt; [FORCE]]</code>是可选的，其中<code>CACHE</code>是缓存，<code>&lt;type&gt;</code><br>是类型，<code>&lt;docstring&gt;</code>是文档字符串，<code>[FORCE]</code>是强制。</p>
 <div class="note note-info">
-            <p>在变量赋值中的<code>&lt;value&gt;</code>是可以是多个值的，比如<code>set(SRC_LIST main.cpp test.cpp)</code>，这样就可以将多个文件赋值给变量<code>SRC_LIST</code>，不同的值之间用空格或者 <strong>;</strong> 隔开。</p>
+            <p>在变量赋值中的<code>&lt;value&gt;</code>是可以是多个值的，比如<code>set(SRC_LIST main.cpp test.cpp)</code>，这样就可以将多个文件赋值给变量<code>SRC_LIST</code><br>，不同的值之间用空格或者 <strong>;</strong> 隔开。</p>
           </div>
 
-<h4 id="aux-source-directory（）"><a href="#aux-source-directory（）" class="headerlink" title="aux_source_directory（）"></a>aux_source_directory（）</h4><p><code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code>是一个所搜的指令，这个命令是将<strong>dir</strong>目录下的所有源文件名称赋值给变量<code>&lt;variable&gt;</code>。</p>
-<h4 id="include-directories（）"><a href="#include-directories（）" class="headerlink" title="include_directories（）"></a>include_directories（）</h4><p><code>include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])</code>是一个包含目录的指令，这个命令是将编译时头文件指向<strong>dir1</strong> [dir2 …]。</p>
-<h4 id="add-executable（）"><a href="#add-executable（）" class="headerlink" title="add_executable（）"></a>add_executable（）</h4><p><code>add_executable(&lt;name&gt; [WIN32] [MACOSX_BUNDLE] [EXCLUDE_FROM_ALL] source1 [source2 ...])</code>是一个可执行文件的指令，这个命令是将源文件<code>source</code>编译成可执行文件<code>name</code>。</p>
+<h4 id="aux-source-directory（）"><a href="#aux-source-directory（）" class="headerlink" title="aux_source_directory（）"></a>aux_source_directory（）</h4><p><code>aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</code>是一个所搜的指令，这个命令是将<strong>dir</strong><br>目录下的所有源文件名称赋值给变量<code>&lt;variable&gt;</code>。</p>
+<h4 id="include-directories（）"><a href="#include-directories（）" class="headerlink" title="include_directories（）"></a>include_directories（）</h4><p><code>include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])</code>是一个包含目录的指令，这个命令是将编译时头文件指向**dir1<br>** [dir2 …]。</p>
+<h4 id="add-executable（）"><a href="#add-executable（）" class="headerlink" title="add_executable（）"></a>add_executable（）</h4><p><code>add_executable(&lt;name&gt; [WIN32] [MACOSX_BUNDLE] [EXCLUDE_FROM_ALL] source1 [source2 ...])</code><br>是一个可执行文件的指令，这个命令是将源文件<code>source</code>编译成可执行文件<code>name</code>。</p>
 <h3 id="cmake的宏"><a href="#cmake的宏" class="headerlink" title="cmake的宏"></a>cmake的宏</h3><p>在<strong>cmake</strong>中，有一些宏是可以直接使用的，这些宏可以直接使用，不需要进行定义。在这里，我将介绍我在上面的例子中使用的宏。</p>
 <h4 id="CMAKE-SOURCE-DIR"><a href="#CMAKE-SOURCE-DIR" class="headerlink" title="CMAKE_SOURCE_DIR"></a>CMAKE_SOURCE_DIR</h4><p><code>CMAKE_SOURCE_DIR</code>是<strong>cmake</strong>的源文件目录，这个目录就是<strong>CMakeLists.txt</strong>所在的目录。</p>
 <h4 id="CMAKE-CURRENT-SOURCE-DIR"><a href="#CMAKE-CURRENT-SOURCE-DIR" class="headerlink" title="CMAKE_CURRENT_SOURCE_DIR"></a>CMAKE_CURRENT_SOURCE_DIR</h4><p><code>CMAKE_CXX_STANDARD</code>是编译器的标准，这个标准是<strong>c++<strong>的标准，这里使用的是</strong>c++17</strong>的标准。</p>
@@ -438,12 +440,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/01/20/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Cmake学习笔记（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Cmake学习笔记（二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/19/page/" title="page">
-                        <span class="hidden-mobile">page</span>
+                      <a href="/2024/01/19/%E4%BD%BF%E7%94%A8hexo%E4%B8%8Efluid%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84blog/" title="使用hexo与fluid搭建自己的blog">
+                        <span class="hidden-mobile">使用hexo与fluid搭建自己的blog</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
