@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%B8%89%EF%BC%89/title.png">
 <meta property="article:published_time" content="2024-01-22T11:31:56.000Z">
-<meta property="article:modified_time" content="2024-01-22T12:12:27.803Z">
+<meta property="article:modified_time" content="2024-01-22T14:25:54.280Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Cmake">
 <meta property="article:tag" content="C++">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          179 字
+          964 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          2 分钟
+          9 分钟
         
       </span>
     
@@ -313,7 +313,49 @@
                 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我们在使用C++的时候，经常会使用到一些库，比如说<code>iostream</code>，<code>vector</code><br>等等，这些库都是在编译器中自带的，我们只需要在代码中<code>#include</code><br>就可以使用了，而有些库时是第三方库，所以需要我们自己调用，而这个过程由及其复杂，所以我们需要使用Cmake来帮助我们来实现这个过程。</p>
 <h3 id="1-制作静态库与动态库"><a href="#1-制作静态库与动态库" class="headerlink" title="1.制作静态库与动态库"></a>1.制作静态库与动态库</h3><h4 id="1-1-制作静态库"><a href="#1-1-制作静态库" class="headerlink" title="1.1.制作静态库"></a>1.1.制作静态库</h4><p>在<strong>cmake</strong>中，制作静态库需要使用的命令如下：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_library</span>(库名 STATIC 源文件<span class="hljs-number">1</span> [源文件<span class="hljs-number">2</span>...])<br></code></pre></td></tr></table></figure>
+
 <p>在windows中，静态库的名称为<code>库名.lib</code>，在linux中，静态库的名称为<code>lib库名.a</code>。</p>
+<p>所以在一下文件夹中</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs powershell">│  CMakeLists.txt<br>│  main.cpp<br>│<br>├─bin<br>│      demo.exe<br>│<br>├─build<br>├─include<br>│      head.h<br>│<br>└─src<br>        add.cpp<br>        div.cpp<br>        mult.cpp<br>        sub.cpp<br></code></pre></td></tr></table></figure>
+
+<p>我们需要将这个文件的内容输出为一个静态库，我们需要在<code>CMakeLists.txt</code>中输入</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#cmake标准</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.27</span>)<br><span class="hljs-comment">#项目名称</span><br><span class="hljs-keyword">project</span>(demo)<br><br><span class="hljs-comment">#设置编译器</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><br><span class="hljs-comment">#添加头文件</span><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-keyword">include</span>)<br><br><span class="hljs-keyword">file</span>(GLOB SRC_LIST <span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/src/*.cpp)<br><br><span class="hljs-comment">#输出静态库</span><br><span class="hljs-keyword">add_library</span>(demo STATIC <span class="hljs-variable">$&#123;SRC_LIST&#125;</span> )<br></code></pre></td></tr></table></figure>
+
+<p>此时在build文件夹中就生成一个libdemo.a文件，这就是我们的静态库。</p>
+<h4 id="1-2-制作动态库"><a href="#1-2-制作动态库" class="headerlink" title="1.2.制作动态库"></a>1.2.制作动态库</h4><p>在<strong>cmake</strong>中，制作动态库仅仅只需要将<code>add_library()</code>函数中的<code>STATIC</code>改为<code>SHARED</code>即可。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_library</span>(库名 SHARED 源文件<span class="hljs-number">1</span> [源文件<span class="hljs-number">2</span>...])<br></code></pre></td></tr></table></figure>
+
+<p>在windows中，动态库的名称为<code>库名.dll</code>，在linux中，动态库的名称为<code>lib库名.so</code>。</p>
+<h4 id="1-3修改输出路径"><a href="#1-3修改输出路径" class="headerlink" title="1.3修改输出路径"></a>1.3修改输出路径</h4><p>在上面的例子中，我们的静态库和动态库都是输出在build文件夹中，但是我们希望将其输出到我们想要的文件夹中，但cmake中可以使用CMAKE_LIBRARY_OUTPUT_DIRECTORY与CMAKE_ARCHIVE_OUTPUT_DIRECTORY这两个宏来实现。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set</span>(CMAKE_LIBRARY_OUTPUT_DIRECTORY <span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/lib) <span class="hljs-comment">#动态库输出路径</span><br><br><span class="hljs-keyword">set</span>(CMAKE_ARCHIVE_OUTPUT_DIRECTORY <span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/lib) <span class="hljs-comment">#静态库输出路径</span><br></code></pre></td></tr></table></figure>
+
+<p>在CMakeLists.txt中加入这两句后运行cmake，就可以将库输出到lib文件夹中了。</p>
+<div class="note note-secondary">
+            <p>注意：<br>在使用这两个宏时，需要在<code>add_library()</code>函数之前使用，否则无法生效。<br>若没有lib文件夹，系统会自动创建。</p>
+          </div>
+
+<h3 id="2-链接库"><a href="#2-链接库" class="headerlink" title="2.链接库"></a>2.链接库</h3><p>在上面的例子中，我们已经成功的制作了静态库和动态库，但在日常生活中，我们如果使用这些库，所以我们就需要链接这些库。</p>
+<h4 id="2-1-链接静态库"><a href="#2-1-链接静态库" class="headerlink" title="2.1.链接静态库"></a>2.1.链接静态库</h4><p>在<strong>cmake</strong>中，链接静态库需要使用<code>target_link_libraries()</code>函数，函数的第一个参数为需要链接的库，第二个参数为需要链接的库的名称。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">target_link_libraries</span>(可执行文件名 库名)<br></code></pre></td></tr></table></figure>
+
+<p>在上面的例子中，我们需要链接静态库，所以我们需要在<code>CMakeLists.txt</code>中输入</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#cmake标准</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.27</span>)<br><span class="hljs-comment">#项目名称</span><br><span class="hljs-keyword">project</span>(demo)<br><br><span class="hljs-comment">#设置编译器</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><br><br><span class="hljs-comment">#添加头文件</span><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-keyword">include</span>)<br><br><span class="hljs-keyword">add_executable</span>(demo main.cpp)<br><br><span class="hljs-comment">#链接静态库</span><br><span class="hljs-keyword">target_link_libraries</span>(demo demo)<br></code></pre></td></tr></table></figure>
+
+<p>但此时，发现在编译时会报错:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell">cannot find <span class="hljs-literal">-lcalc</span><br>collect2.exe: error: ld returned <span class="hljs-number">1</span> <span class="hljs-keyword">exit</span> status<br>mingw32<span class="hljs-literal">-make</span>.exe[<span class="hljs-number">2</span>]: *** [<span class="hljs-type">CMakeFiles</span>\<span class="hljs-type">demo.dir</span>\<span class="hljs-type">build.make</span>:<span class="hljs-number">99</span>: <span class="hljs-type">demo.exe</span>] Error <span class="hljs-number">1</span><br>mingw32<span class="hljs-literal">-make</span>.exe[<span class="hljs-number">1</span>]: *** [<span class="hljs-type">CMakeFiles</span>\<span class="hljs-type">Makefile2</span>:<span class="hljs-number">82</span>: <span class="hljs-type">CMakeFiles</span>/<span class="hljs-type">demo.dir</span>/<span class="hljs-type">all</span>] Error <span class="hljs-number">2</span><br>mingw32<span class="hljs-literal">-make</span>.exe: *** [<span class="hljs-type">Makefile</span>:<span class="hljs-number">90</span>: <span class="hljs-type">all</span>] Error <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<p>这是因为我们生成的库的目录不在系统的环境变量里，所以编译器不知道我们的静态库在哪里，所以我们需要在<code>CMakeLists.txt</code>中加入</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#设置静态库路径</span><br><span class="hljs-keyword">link_directories</span>(<span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/lib)<br></code></pre></td></tr></table></figure>
+
+<p>此再在powershell中运行<code>cmake</code>,就不会报错了。</p>
+<h4 id="2-2-链接动态库"><a href="#2-2-链接动态库" class="headerlink" title="2.2.链接动态库"></a>2.2.链接动态库</h4><p>动态库的链接和静态库一样，也是使用<code>target_link_libraries()</code>函数，只是函数的第二个参数为动态库的名字。</p>
+<p>代码如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#cmake标准</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.15</span>)<br><span class="hljs-comment">#项目名称</span><br><span class="hljs-keyword">project</span>(demo)<br><br><span class="hljs-comment">#设置编译器</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><br><span class="hljs-comment">#添加头文件</span><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-keyword">include</span>)<br><br><span class="hljs-comment">#链接静态库地址</span><br><span class="hljs-keyword">link_directories</span>(<span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/lib)<br><br><span class="hljs-keyword">add_executable</span>(demo main.cpp)<br><br><span class="hljs-keyword">target_link_libraries</span>(demo  calc)<br></code></pre></td></tr></table></figure>
+
+<div class="note note-secondary">
+            <p>注意：<br>无论是静态库还是动态库，都需要在<code>target_link_libraries()</code>函数之前使用<code>link_directories()</code>函数，且需要在<code>add_executable()</code><br>函数之后使用。</p>
+          </div>
+
 
                 
               </div>
@@ -401,6 +443,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/20/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Cmake学习笔记（二）">
+                        <span class="hidden-mobile">Cmake学习笔记（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
