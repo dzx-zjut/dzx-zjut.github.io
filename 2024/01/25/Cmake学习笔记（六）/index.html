@@ -16,25 +16,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="cmake中字符串的基本操作">
+    <meta name="description" content="list()函数与string()函数的使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cmake学习笔记（五）">
-<meta property="og:url" content="http://example.com/2024/01/24/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/index.html">
+<meta property="og:title" content="Cmake学习笔记（六）">
+<meta property="og:url" content="http://example.com/2024/01/25/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="cmake中字符串的基本操作">
+<meta property="og:description" content="list()函数与string()函数的使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%BA%94%EF%BC%89/title.png">
-<meta property="article:published_time" content="2024-01-24T13:33:45.000Z">
-<meta property="article:modified_time" content="2024-01-25T11:16:11.158Z">
+<meta property="og:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E5%85%AD%EF%BC%89/title.png">
+<meta property="article:published_time" content="2024-01-25T11:19:19.000Z">
+<meta property="article:modified_time" content="2024-01-25T11:59:06.574Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Cmake">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%BA%94%EF%BC%89/title.png">
+<meta name="twitter:image" content="http://example.com/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E5%85%AD%EF%BC%89/title.png">
   
   
   
-  <title>Cmake学习笔记（五） - Hexo</title>
+  <title>Cmake学习笔记（六） - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,13 +228,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E4%BA%94%EF%BC%89/title.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%EF%BC%88%E5%85%AD%EF%BC%89/title.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Cmake学习笔记（五）"></span>
+            <span id="subtitle" data-typed-text="Cmake学习笔记（六）"></span>
           
         </div>
 
@@ -245,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-24 21:33" pubdate>
-          2024年1月24日 晚上
+        <time datetime="2024-01-25 19:19" pubdate>
+          2024年1月25日 晚上
         </time>
       </span>
     
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          519 字
+          1.4k 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          5 分钟
+          12 分钟
         
       </span>
     
@@ -305,39 +305,141 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Cmake学习笔记（五）</h1>
+            <h1 id="seo-header">Cmake学习笔记（六）</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><p>字符串作为一种极其常见的数据类型，<strong>cmake</strong>也提供了一些字符串操作的函数，这里主要介绍一下<strong>cmake</strong>中常用字符串的操作。</p>
-<h4 id="1-字符串插入"><a href="#1-字符串插入" class="headerlink" title="1.字符串插入"></a>1.字符串插入</h4><p>在*<em>cmake</em>中，由许多函数可以实现字符串的插入操作，这里主要介绍<code>string()``set()</code> <code>list()</code>这三个函数。</p>
-<h5 id="1-1set-函数"><a href="#1-1set-函数" class="headerlink" title="1.1set()函数"></a>1.1<code>set()</code>函数</h5><p><code>set()</code>函数的使用方法如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set</span>(&lt;变量名&gt; [&lt;值<span class="hljs-number">1</span>&gt; &lt;值<span class="hljs-number">2</span>&gt; ... ])<br></code></pre></td></tr></table></figure>
+                <h3 id="1-list-函数"><a href="#1-list-函数" class="headerlink" title="1.list()函数"></a>1.list()函数</h3><p>list()函数除了用于字符串的拼接外，还有其他的用法</p>
+<h4 id="1-1-获得list-的长度"><a href="#1-1-获得list-的长度" class="headerlink" title="1.1 获得list()的长度"></a>1.1 获得list()的长度</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(LENGTH &lt;<span class="hljs-keyword">list</span>&gt; &lt;output variable&gt;)<br></code></pre></td></tr></table></figure>
 
-<p><code>set()</code>函数的作用是将值1到值n经行拼接，将其存储到变量中，如果变量的值已经存在，则会覆盖原来的值。</p>
-<h5 id="1-2list-函数"><a href="#1-2list-函数" class="headerlink" title="1.2list()函数"></a>1.2<code>list()</code>函数</h5><p><code>list()</code>函数的使用方法如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(&lt;APPEND&gt; &lt;变量名&gt; [&lt;值<span class="hljs-number">1</span>&gt; &lt;值<span class="hljs-number">2</span>&gt; ... ])<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>LENGTH</code>:子命令，用于获取list()的长度</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;output variable&gt;</code>:输出变量，用于存储list()的长度</li>
+</ul>
+<h4 id="1-2-获得列表指定索引的元素"><a href="#1-2-获得列表指定索引的元素" class="headerlink" title="1.2 获得列表指定索引的元素"></a>1.2 获得列表指定索引的元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(GET &lt;<span class="hljs-keyword">list</span>&gt; &lt;element index&gt; [&lt;element index&gt; ...])<br></code></pre></td></tr></table></figure>
 
-<p>在<code>list()</code>函数中，<code>APPEND</code>说明此时list()函数的作用；链接，是将值1给添加到变量的值后面，如果变量有值，这个操作是不会覆盖原来的值的。</p>
-<div class="note note-info">
-            <p><code>list()</code>在底层的实现并非直接的字符串拼接，而是将一个个值以<code>;</code>分隔，存储到变量中。</p>
-          </div>
+<ul>
+<li><code>GET</code>:子命令，用于获取list()中指定索引的元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;element index&gt;</code>:元素的索引<ul>
+<li>索引从0开始</li>
+<li>可以指定多个索引，用于获取多个元素</li>
+<li>如果索引超出范围，则运行时会报错</li>
+<li>-1表示获取最后一个元素，-2表示获取倒数第二个元素，以此类推</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-在列表末尾插入元素"><a href="#1-3-在列表末尾插入元素" class="headerlink" title="1.3 在列表末尾插入元素"></a>1.3 在列表末尾插入元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(APPEND &lt;<span class="hljs-keyword">list</span>&gt; [&lt;element&gt; ...])<br></code></pre></td></tr></table></figure>
 
-<h5 id="1-3string-函数"><a href="#1-3string-函数" class="headerlink" title="1.3string()函数"></a>1.3<code>string()</code>函数</h5><p><code>string()</code>函数的使用方法如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(&lt;APPEND&gt; &lt;变量名&gt; [&lt;值<span class="hljs-number">1</span>&gt; &lt;值<span class="hljs-number">2</span>&gt; ... ])<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>APPEND</code>:子命令，用于在列表末尾插入元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;element&gt;</code>:要插入的元素<ul>
+<li>可以指定多个元素，用于一次性插入多个元素</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-4-在列表指定位置插入元素"><a href="#1-4-在列表指定位置插入元素" class="headerlink" title="1.4 在列表指定位置插入元素"></a>1.4 在列表指定位置插入元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(INSERT &lt;<span class="hljs-keyword">list</span>&gt; &lt;insert-index&gt; [&lt;element&gt; ...])<br></code></pre></td></tr></table></figure>
 
-<p><code>string()</code>函数的用法大致和<code>list()</code>相同。</p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5><p>set()函数 list()函数 string()函数在<strong>cmake</strong>中的使用情况如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><br><span class="hljs-keyword">set</span>(STR <span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;STR&#125;</span>)<br><span class="hljs-keyword">set</span>(STR <span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;STR&#125;</span>)<br><span class="hljs-keyword">list</span>(APPEND STR <span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;STR&#125;</span>)<br><span class="hljs-keyword">string</span>(APPEND STR <span class="hljs-string">&quot;world&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;STR&#125;</span>)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>INSERT</code>:子命令，用于在列表指定位置插入元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;insert-index&gt;</code>:插入的位置<ul>
+<li>索引从0开始</li>
+<li>如果索引超出范围，则运行时会报错</li>
+<li>-1表示插入到最后一个元素的后面，-2表示插入到倒数第二个元素的后面，以此类推</li>
+</ul>
+</li>
+<li><code>&lt;element&gt;</code>:要插入的元素</li>
+</ul>
+<h4 id="1-5-将元素插入到列表头部"><a href="#1-5-将元素插入到列表头部" class="headerlink" title="1.5 将元素插入到列表头部"></a>1.5 将元素插入到列表头部</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(PREPEND &lt;<span class="hljs-keyword">list</span>&gt; [&lt;element&gt; ...])<br></code></pre></td></tr></table></figure>
 
-<p>在powershell中的输出结果如下：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">hello<br>world<br>worldworld<br>worldworldworld<br></code></pre></td></tr></table></figure>
-<h4 id="2-字符串的删除"><a href="#2-字符串的删除" class="headerlink" title="2.字符串的删除"></a>2.字符串的删除</h4><p>在<strong>cmake</strong>中，我们可以使用<code>string()</code>函数与<code>list()</code>函数来删除字符串中的某些字符，具体内容如下</p>
-<h5 id="2-1list-函数"><a href="#2-1list-函数" class="headerlink" title="2.1list()函数"></a>2.1<code>list()</code>函数</h5><p><code>list()</code>函数的使用方法如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(REMOVE_ITEM &lt;变量名&gt; &lt;值<span class="hljs-number">1</span>&gt; [&lt;值<span class="hljs-number">2</span>&gt; ... &lt;值n&gt;])<br></code></pre></td></tr></table></figure>
-<p><code>list()</code>函数在<strong>REMOVE_ITEM</strong>关键字的作用是在变量中找到并删除值为值1的元素。</p>
-<p>以上就是<strong>cmake</strong>中字符串的基本操作，更多的字符串操作可以参考<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)">cmake官方文档</a>。</p>
+<ul>
+<li><code>PREPEND</code>:子命令，用于将元素插入到列表头部</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;element&gt;</code>:要插入的元素</li>
+</ul>
+<h4 id="1-6-删除列表指定位置的元素"><a href="#1-6-删除列表指定位置的元素" class="headerlink" title="1.6 删除列表指定位置的元素"></a>1.6 删除列表指定位置的元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(REMOVE_AT &lt;<span class="hljs-keyword">list</span>&gt; &lt;element index&gt; [&lt;element index&gt; ...])<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>REMOVE_AT</code>:子命令，用于删除列表指定位置的元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;element index&gt;</code>:要删除的元素的索引</li>
+</ul>
+<h4 id="1-7-删除列表中指定的元素"><a href="#1-7-删除列表中指定的元素" class="headerlink" title="1.7 删除列表中指定的元素"></a>1.7 删除列表中指定的元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(REMOVE_ITEM &lt;<span class="hljs-keyword">list</span>&gt; &lt;value&gt; [&lt;value&gt; ...])<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>REMOVE_ITEM</code>:子命令，用于删除列表中指定的元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+<li><code>&lt;value&gt;</code>:要删除的元素</li>
+</ul>
+<h4 id="1-8-删除列表中的重复元素"><a href="#1-8-删除列表中的重复元素" class="headerlink" title="1.8 删除列表中的重复元素"></a>1.8 删除列表中的重复元素</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(REMOVE_DUPLICATES &lt;<span class="hljs-keyword">list</span>&gt;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>REMOVE_DUPLICATES</code>:子命令，用于删除列表中的重复元素</li>
+<li><code>&lt;list&gt;</code>:list()的名称</li>
+</ul>
+<h4 id="1-9-列表反转"><a href="#1-9-列表反转" class="headerlink" title="1.9 列表反转"></a>1.9 列表反转</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(REVERSE &lt;<span class="hljs-keyword">list</span>&gt;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-10-列表排序"><a href="#1-10-列表排序" class="headerlink" title="1.10 列表排序"></a>1.10 列表排序</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(SORT &lt;<span class="hljs-keyword">list</span>&gt; [COMPARE &lt;compare&gt;] [CASE &lt;case&gt;] [ORDER &lt;order&gt;])<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>COMPARE:用于指定比较函数<ul>
+<li>STRING:按照字母顺序排序，是默认的比较函数</li>
+<li>FILE_BASENAME:如果是一系列路径名，按照文件名排序</li>
+<li>NATURAL:按照数字顺序排序</li>
+<li>如果不指定，则使用默认的比较函数</li>
+</ul>
+</li>
+<li>CASE:用于指定比较时是否区分大小写<ul>
+<li>INSENSITIVE:不区分大小写</li>
+<li>SENSITIVE:区分大小写</li>
+<li>如果不指定，则默认区分大小写</li>
+</ul>
+</li>
+<li>ORDER:用于指定排序的顺序<ul>
+<li>ASCENDING:升序</li>
+<li>DESCENDING:降序</li>
+<li>如果不指定，则默认升序</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-string-函数"><a href="#2-string-函数" class="headerlink" title="2.string()函数"></a>2.string()函数</h3><h4 id="2-1-字符串替换"><a href="#2-1-字符串替换" class="headerlink" title="2.1 字符串替换"></a>2.1 字符串替换</h4><p>在<strong>cmake</strong>中，我们可以使用多种方式来替换字符串中的内容。这些替换方法主要可以分为两类：全局替换和单次替换.</p>
+<h5 id="2-1-1-全局替换"><a href="#2-1-1-全局替换" class="headerlink" title="2.1.1 全局替换"></a>2.1.1 全局替换</h5><p>在CMake中，我们可以使用<code>string(REPLACE)</code>来进行全局替换。这个命令会将字符串中所有匹配的子串替换为指定的新子串。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(REPLACE &lt;substring&gt; &lt;replace&gt; &lt;output variable&gt; &lt;input&gt;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>substring: 被替换的字符串</li>
+<li>replace:替换后的字符串</li>
+<li>output variable:存储替换后的结果</li>
+<li>input:要替换的字符串</li>
+</ul>
+<p>例如，我们可以这样使用<code>string(REGEX REPLACE)</code>:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(REGEX REPLACE <span class="hljs-string">&quot;Hello&quot;</span> <span class="hljs-string">&quot;Hi&quot;</span> result <span class="hljs-string">&quot;Hello, Hello!&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;result&#125;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>结果为：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">Hi, Hi!<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-单次替换"><a href="#2-1-2-单次替换" class="headerlink" title="2.1.2 单次替换"></a>2.1.2 单次替换</h4><p>在cmake中，我们可以使用<code>string(REGEX REPLACE)</code>来进行单次替换。这个命令会将字符串中第一个匹配的子串替换为指定的新子串。<br>例如，我们可以这样使用<code>string(REGEX REPLACE)</code>:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(REGEX REPLACE <span class="hljs-string">&quot;Hello&quot;</span> <span class="hljs-string">&quot;Hi&quot;</span> result <span class="hljs-string">&quot;Hello, Hello!&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;result&#125;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这段代码的结果是：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">Hi, Hello!<br></code></pre></td></tr></table></figure>
+
+<p>以上就是CMake中字符串替换的基本方法。在实际使用中，我们可以根据需要选择合适的替换方法。</p>
+<h4 id="2-2-字符串的分割"><a href="#2-2-字符串的分割" class="headerlink" title="2.2 字符串的分割"></a>2.2 字符串的分割</h4><p><code>string()</code>函数有多种分割方式，这些分割方法主要可以分为两类：使用<code>string(REGEX MATCHALL)</code>和使用<code>string(STRIP)</code>。</p>
+<h5 id="2-2-1-使用string-REGEX-MATCHALL-进行分割"><a href="#2-2-1-使用string-REGEX-MATCHALL-进行分割" class="headerlink" title="2.2.1 使用string(REGEX MATCHALL)进行分割"></a>2.2.1 使用<code>string(REGEX MATCHALL)</code>进行分割</h5><p>在cmake中，我们可以使用<code>string(REGEX MATCHALL)</code>来进行字符串分割。这个命令会使用正则表达式来匹配字符串中的所有子串。<br>例如，我们可以这样使用<code>string(REGEX MATCHALL)</code>:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(REGEX MATCHALL <span class="hljs-string">&quot;[0-9]+&quot;</span> result <span class="hljs-string">&quot;Hello123World456&quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;result&#125;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这段代码会输出<code>123 456</code>，因为它将字符串<code>&quot;Hello123World456&quot;</code>中的所有数字子串匹配出来</p>
+<h5 id="2-3-2-使用string-STRIP-进行分割"><a href="#2-3-2-使用string-STRIP-进行分割" class="headerlink" title="2.3.2 使用string(STRIP)进行分割"></a>2.3.2 使用<code>string(STRIP)</code>进行分割</h5><p>在cmake中，我们可以使用<code>string(STRIP)</code>来进行字符串分割。这个命令会移除字符串两端的空白字符。<br>例如，我们可以这样使用<code>string(STRIP)</code>:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">string</span>(STRIP result <span class="hljs-string">&quot; Hello World &quot;</span>)<br><span class="hljs-keyword">message</span>(<span class="hljs-variable">$&#123;result&#125;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这段代码会输出<code>Hello World</code>，因为它将字符串”<code>Hello World</code>“两端的空白字符移除了。</p>
+<p>以上就是CMake中字符串分割的基本方法。在实际使用中，我们可以根据需要选择合适的分割方法。</p>
+<h4 id="2-3-字符串的替换"><a href="#2-3-字符串的替换" class="headerlink" title="2.3 字符串的替换"></a>2.3 字符串的替换</h4><p>在cmake中，我们可以使用<code>string(REPLACE &lt;substring&gt; &lt;replace&gt; &lt;output variable&gt; &lt;input&gt;)</code><br>函数来替换字符串中的某个子字符串。这在处理测试用例或者其他需要替换的场景中非常有用。</p>
 
                 
               </div>
@@ -385,8 +487,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Cmake学习笔记（五）</div>
-      <div>http://example.com/2024/01/24/Cmake学习笔记（五）/</div>
+      <div>Cmake学习笔记（六）</div>
+      <div>http://example.com/2024/01/25/Cmake学习笔记（六）/</div>
     </div>
     <div class="license-meta">
       
@@ -398,7 +500,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月24日</div>
+          <div>2024年1月25日</div>
         </div>
       
       
@@ -430,18 +532,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/25/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" title="Cmake学习笔记（六）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cmake学习笔记（六）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/24/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Cmake学习笔记（四）">
-                        <span class="hidden-mobile">Cmake学习笔记（四）</span>
+                      <a href="/2024/01/24/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" title="Cmake学习笔记（五）">
+                        <span class="hidden-mobile">Cmake学习笔记（五）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
